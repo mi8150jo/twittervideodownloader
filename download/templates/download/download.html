@@ -1,0 +1,22 @@
+{% extends "download/layout.html" %}
+
+{% block head %}
+<title>Twidouga</title>
+{% endblock %} 
+
+{% block body %}
+<h1>This is Download</h1>
+
+{% if message %}
+<div>{{ message }}</div>
+{% endif %}
+
+<a href="{% url 'index' %}">Back to welcome</a>
+
+<form action="{% url 'download' %}" method="POST">
+    {% csrf_token %}
+    <input type="url" name="url">
+    <input type="submit">
+</form>
+
+{% endblock %}
