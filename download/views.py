@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 import tweepy
 import logging
 import re
 import pprint
 from django.http import HttpResponse
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
@@ -14,13 +15,13 @@ def download(request):
     logging.debug("downloadリクエスト")
 
     if request.method == "POST":
-        logging.debug("urlを受け取りました")
+        print("urlを受け取りました")
 
         #key設定
-        consumer_key        = ''
-        consumer_secret     = ''
-        access_token        = ''
-        access_token_secret = '' 
+        consumer_key        = 'g1pvtJMaOaWP3O2FacNwnffmo'
+        consumer_secret     = 'AJCZ08PxQhYOYctWalPrgfdEi7vwgvypvv4GfXKWqgYPw9O8HB'
+        access_token        = '982246350271033344-wSqRQMOaUJrXBBK8L1wgjiNtLHz7m2D'
+        access_token_secret = 'lNnLC78KvMnE3NWHznlL7C0iG9y4LOvHq6PR8ULTZdgel' 
 
         #認証
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -65,15 +66,18 @@ def download(request):
         #urlがあればダウンロードなければエラーメッセージを返す
         try:
             if video_url:
-                video = requests.get(video_url)
+
+                #video = requests.get(video_url)
                 # with open('video.mp4', 'wb') as f:
                 #     f.write(video.content)
+
+                return preview(request, video_url)
                 
-                return render(request, "download/preview.html",
-                    context={
-                        "url":video_url,
-                    }
-                )
+                # return render(request, "download/preview.html",
+                #     context={
+                #         "url":video_url,
+                #     }
+                # )
         except(UnboundLocalError):
             return render(request, "download/download.html",
                 context={
@@ -92,13 +96,9 @@ def download(request):
         }
     )
 
-def preview(request):
-
-    # try:
-    #     if request.method == "POST":
-    #         HttpsResponse(video_url)
+def preview(request, video_url):
     return render(request, "download/preview.html",
         context={
-            
+            "url":video_url,
         }
     )

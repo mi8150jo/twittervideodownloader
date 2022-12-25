@@ -2,11 +2,11 @@
 
 {% block head %}
 <title>preview</title>
-{% endblock %}
+{% endblock %} 
 {% block body %}
 <h1>This is preview.</h1>
+<a href="{{ url }}" target="_blank">動画url</a>
+<button action="{% url 'preview' %}" method="POST">動画をダウンロード</button><br>
 <a href="{% url 'download' %}">back to download</a>
-<a href="{{ url }}">動画url</a>
-
-<button action="{% url 'preview' %}" method="POST">動画をダウンロード</button>
 {% endblock %}
+
