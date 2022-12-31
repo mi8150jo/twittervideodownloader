@@ -5,8 +5,11 @@
 {% endblock %} 
 {% block body %}
 <h1>This is preview.</h1>
+<img src="{{ img_url }}">
+<p>ユーザー名 : {{ username }}</p>
 <a href="{{ url }}" target="_blank">動画url</a>
-<button action="{% url 'preview' %}" method="POST">動画をダウンロード</button><br>
-<a href="{% url 'download' %}">back to download</a>
+<a href="{{ url }}" download>動画をダウンロードする</a>
+<p>ダウンロード回数 : {{ download_count }}</p>
+<a href="{% url 'download' %}">back to download</a><br>
 {% endblock %}
 
