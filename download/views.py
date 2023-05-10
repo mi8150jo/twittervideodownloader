@@ -20,10 +20,10 @@ def download(request):
         print("urlを受け取りました")
 
         #key設定
-        consumer_key        = 'g1pvtJMaOaWP3O2FacNwnffmo'
-        consumer_secret     = 'AJCZ08PxQhYOYctWalPrgfdEi7vwgvypvv4GfXKWqgYPw9O8HB'
-        access_token        = '982246350271033344-wSqRQMOaUJrXBBK8L1wgjiNtLHz7m2D'
-        access_token_secret = 'lNnLC78KvMnE3NWHznlL7C0iG9y4LOvHq6PR8ULTZdgel' 
+        consumer_key        = ''
+        consumer_secret     = ''
+        access_token        = ''
+        access_token_secret = '' 
 
         #認証
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
